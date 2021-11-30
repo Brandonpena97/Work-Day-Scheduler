@@ -44,20 +44,48 @@ for (let index = 0; index < timeArrays.length; index++) {
 }
 
 function saveTask(event) {
-    console.log(event.target.previousSibling.value);
-    
-    var currentHour = document.querySelector(".hour");
-    var textDescription = document.querySelector(".description");
+    console.log(event.target.id)
+    console.log(event.target.previousElementSibling.value);
 
-    localStorage.setItem(currentHour.value , textDescription.textContent);
+
+    var currentHour = event.target.id
+    var textDescription = event.target.previousElementSibling.value;
+
+    // localStorage.setItem(currentHour.value , textDescription);
+    localStorage.setItem(currentHour, textDescription)
 }
 
-var saveButton = document.querySelector(".saveBtn");
+var saveButton = document.querySelectorAll(".saveBtn");
 
-for (let index = 0; index < saveButton.length; index++) {
+
+// saveButton[0].addEventListener("click",saveTask); 
+// saveButton[1].addEventListener("click",saveTask); 
+// saveButton[2].addEventListener("click",saveTask); 
+
+
+for (let i = 0; i < saveButton.length; i++) {
     
-    saveButton[index].addEventListener("click",saveTask); 
+    saveButton[i].addEventListener("click",saveTask); 
     
 }
+
+////////////////////////////// LOADING PART
+
+var textArea = document.querySelectorAll(".description");
+
+
+// saveButton[0].addEventListener("click",saveTask); 
+// saveButton[1].addEventListener("click",saveTask); 
+// saveButton[2].addEventListener("click",saveTask); 
+
+
+for (let i = 0; i < textArea.length; i++) {
+    
+    var myMessage = localStorage.getItem(i+9)
+
+   textArea[i].value = myMessage
+    
+}
+
 
 
