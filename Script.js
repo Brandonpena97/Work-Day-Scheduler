@@ -43,14 +43,21 @@ for (let index = 0; index < timeArrays.length; index++) {
     
 }
 
-function saveTask() {
-    alert("Hello World!")
+function saveTask(event) {
+    console.log(event.target.previousSibling.value);
     
-    var currentHour = document.querySelectorAll(".hour");
-    var textDescription = document.querySelectorAll(".description");
+    var currentHour = document.querySelector(".hour");
+    var textDescription = document.querySelector(".description");
 
-    localStorage.setItem(currentHour , textDescription);
+    localStorage.setItem(currentHour.value , textDescription.textContent);
 }
 
-var saveButton = document.querySelectorAll(".saveBtn");
-saveButton.addEventListener("click",saveTask); 
+var saveButton = document.querySelector(".saveBtn");
+
+for (let index = 0; index < saveButton.length; index++) {
+    
+    saveButton[index].addEventListener("click",saveTask); 
+    
+}
+
+
